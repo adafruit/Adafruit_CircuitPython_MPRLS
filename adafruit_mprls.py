@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 """
-`Adafruit_MPRLS`
+`adafruit_mprls`
 ====================================================
 
 CircuitPython library to support Honeywell MPRLS digital pressure sensors
