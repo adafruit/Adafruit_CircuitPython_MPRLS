@@ -23,7 +23,7 @@
 `Adafruit_MPRLS`
 ====================================================
 
-.. todo:: Describe what the module does
+CircuitPython library to support Honeywell MPRLS digital pressure sensors
 
 * Author(s): ladyada
 
