@@ -45,8 +45,6 @@ Usage Example
 	    print((mpr.pressure,))
 	    time.sleep(1)
 
-.. todo:: Add a quick, simple example. It and other examples should live in the examples folder and be included in docs/examples.rst.
-
 Contributing
 ============
 

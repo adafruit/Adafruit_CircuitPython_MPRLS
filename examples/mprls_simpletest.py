@@ -14,7 +14,7 @@ import digitalio
 reset = digitalio.DigitalInOut(board.D5)
 eoc = digitalio.DigitalInOut(board.D6)
 mpr = adafruit_mprls.MPRLS(i2c, eoc_pin=eoc, reset_pin=reset,
-                           psi_min=0, psi_max=25) 
+                           psi_min=0, psi_max=25)
 """
 
 while True:

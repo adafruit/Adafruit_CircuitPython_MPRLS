@@ -66,9 +66,9 @@ class MPRLS:
     :param float psi_min: The minimum pressure in PSI, defaults to 0
     :param float psi_max: The maximum pressure in PSI, defaults to 25
     """
-    
-    def __init__(self, i2c_bus, *, addr = _MPRLS_DEFAULT_ADDR,
-                 reset_pin = None, eoc_pin = None, psi_min = 0, psi_max = 25):
+
+    def __init__(self, i2c_bus, *, addr=_MPRLS_DEFAULT_ADDR,
+                 reset_pin=None, eoc_pin=None, psi_min=0, psi_max=25):
         # Init I2C
         self._i2c = I2CDevice(i2c_bus, addr)
         self._buffer = bytearray(4)
@@ -123,7 +123,7 @@ class MPRLS:
             raise RuntimeError("Internal math saturation")
         if self._buffer[0] & 0x04:
             raise RuntimeError("Integrity failure")
-        
+
         # All is good, calculate the PSI and convert to hPA
         raw_psi = (self._buffer[1] << 16) | (self._buffer[2] << 8) | self._buffer[3]
         # use the 10-90 calibration curve
