@@ -13,7 +13,7 @@ Introduction
     :target: https://travis-ci.org/adafruit/Adafruit_CircuitPython_MPRLS
     :alt: Build Status
 
-CircuitPython library to support VEML6075 UVA & UVB sensor.
+CircuitPython library to support Honeywell MPRLS digital pressure sensors.
 
 Dependencies
 =============
