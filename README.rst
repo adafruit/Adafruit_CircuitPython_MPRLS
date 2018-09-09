@@ -13,7 +13,7 @@ Introduction
     :target: https://travis-ci.org/adafruit/Adafruit_CircuitPython_MPRLS
     :alt: Build Status
 
-.. todo:: Describe what the library does.
+CircuitPython library to support Honeywell MPRLS digital pressure sensors.
 
 Dependencies
 =============
@@ -29,7 +29,22 @@ This is easily achieved by downloading
 Usage Example
 =============
 
-.. todo:: Add a quick, simple example. It and other examples should live in the examples folder and be included in docs/examples.rst.
+.. code-block:: python
+
+	import time
+	import board
+	import busio
+	import adafruit_mprls
+
+	i2c = busio.I2C(board.SCL, board.SDA)
+
+	# Simplest use, connect to default over I2C
+	mpr = adafruit_mprls.MPRLS(i2c, psi_min=0, psi_max=25)
+
+
+	while True:
+	    print((mpr.pressure,))
+	    time.sleep(1)
 
 Contributing
 ============
