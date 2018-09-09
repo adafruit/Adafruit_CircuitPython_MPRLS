@@ -88,7 +88,7 @@ class MPRLS:
             self._eoc.direction = Direction.INPUT
 
         if psi_min >= psi_max:
-            raise RuntimeError("Min PSI must be < max!")
+            raise ValueError("Min PSI must be < max!")
         self._psimax = psi_max
         self._psimin = psi_min
         # That's pretty much it, there's no ID register :(
