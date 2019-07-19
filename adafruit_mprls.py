@@ -123,7 +123,7 @@ class MPRLS:
         # check other status bits
         if self._buffer[0] & 0x01:
             raise RuntimeError("Internal math saturation")
-        if self._buffer[0] & 0x04:
+        if self._buffer[2] & 0x01:
             raise RuntimeError("Integrity failure")
 
         # All is good, calculate the PSI and convert to hPA
