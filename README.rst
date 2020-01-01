@@ -9,8 +9,8 @@ Introduction
     :target: https://discord.gg/nBQh6qu
     :alt: Discord
 
-.. image:: https://travis-ci.com/adafruit/Adafruit_CircuitPython_MPRLS.svg?branch=master
-    :target: https://travis-ci.com/adafruit/Adafruit_CircuitPython_MPRLS
+.. image:: https://github.com/adafruit/Adafruit_CircuitPython_MPRLS/workflows/Build%20CI/badge.svg
+    :target: https://github.com/adafruit/Adafruit_CircuitPython_MPRLS/actions/
     :alt: Build Status
 
 CircuitPython library to support Honeywell MPRLS digital pressure sensors.
