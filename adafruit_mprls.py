@@ -56,6 +56,7 @@ from micropython import const
 _MPRLS_DEFAULT_ADDR = const(0x18)
 # pylint: enable=bad-whitespace
 
+
 class MPRLS:
     """
     Driver base for the MPRLS pressure sensor
@@ -67,8 +68,16 @@ class MPRLS:
     :param float psi_max: The maximum pressure in PSI, defaults to 25
     """
 
-    def __init__(self, i2c_bus, *, addr=_MPRLS_DEFAULT_ADDR,
-                 reset_pin=None, eoc_pin=None, psi_min=0, psi_max=25):
+    def __init__(
+        self,
+        i2c_bus,
+        *,
+        addr=_MPRLS_DEFAULT_ADDR,
+        reset_pin=None,
+        eoc_pin=None,
+        psi_min=0,
+        psi_max=25
+    ):
         # Init I2C
         self._i2c = I2CDevice(i2c_bus, addr)
         self._buffer = bytearray(4)
@@ -80,7 +89,7 @@ class MPRLS:
             reset_pin.value = False
             time.sleep(0.01)
             reset_pin.value = True
-        time.sleep(0.005) # Start up timing
+        time.sleep(0.005)  # Start up timing
 
         # Optional end-of-conversion pin
         self._eoc = eoc_pin
@@ -97,7 +106,6 @@ class MPRLS:
     def pressure(self):
         """The measured pressure, in hPa"""
         return self._read_data()
-
 
     def _read_data(self):
         """Read the status & 24-bit data reading"""
@@ -129,7 +137,7 @@ class MPRLS:
         # All is good, calculate the PSI and convert to hPA
         raw_psi = (self._buffer[1] << 16) | (self._buffer[2] << 8) | self._buffer[3]
         # use the 10-90 calibration curve
-        psi = (raw_psi - 0x19999A) * (self._psimax-self._psimin)
+        psi = (raw_psi - 0x19999A) * (self._psimax - self._psimin)
         psi /= 0xE66666 - 0x19999A
         psi += self._psimin
         # convert PSI to hPA
