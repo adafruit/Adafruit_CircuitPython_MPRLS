@@ -52,9 +52,7 @@ from adafruit_bus_device.i2c_device import I2CDevice
 from digitalio import Direction
 from micropython import const
 
-# pylint: disable=bad-whitespace
 _MPRLS_DEFAULT_ADDR = const(0x18)
-# pylint: enable=bad-whitespace
 
 
 class MPRLS:
