@@ -48,7 +48,8 @@ class MPRLS:
     :param ~busio.I2C i2c_bus: The I2C bus the MPRLS is connected to
     :param int addr: The I2C device address. Defaults to :const:`0x18`
     :param ~microcontroller.Pin reset_pin: Optional ``digitalio.pin`` for hardware resetting
-    :param ~microcontroller.Pin eoc_pin: Optional ``digitalio pin`` for getting End Of Conversion signal
+    :param ~microcontroller.Pin eoc_pin: Optional ``digitalio pin``
+                                         for getting End Of Conversion signal
     :param float psi_min: The minimum pressure in PSI, defaults to :const:`0`
     :param float psi_max: The maximum pressure in PSI, defaults to :const:`25`
 
