@@ -54,22 +54,21 @@ To install in a virtual environment in your current project:
 Usage Example
 =============
 
-.. code-block:: python
+.. code-block:: python3
 
-	import time
-	import board
-	import busio
-	import adafruit_mprls
+    import time
+    import board
+    import adafruit_mprls
 
-	i2c = busio.I2C(board.SCL, board.SDA)
+    i2c = board.I2C()
 
-	# Simplest use, connect to default over I2C
-	mpr = adafruit_mprls.MPRLS(i2c, psi_min=0, psi_max=25)
+    # Simplest use, connect to default over I2C
+    mpr = adafruit_mprls.MPRLS(i2c, psi_min=0, psi_max=25)
 
+    while True:
+        print((mpr.pressure,))
+        time.sleep(1)
 
-	while True:
-	    print((mpr.pressure,))
-	    time.sleep(1)
 
 Contributing
 ============

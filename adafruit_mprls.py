@@ -15,10 +15,13 @@ Implementation Notes
 
 **Hardware:**
 
+* Adafruit `Adafruit MPRLS Ported Pressure Sensor Breakout
+  <https://www.adafruit.com/product/3965>`_ (Product ID: 3965)
+
 **Software and Dependencies:**
 
 * Adafruit CircuitPython firmware for the supported boards:
-  https://github.com/adafruit/circuitpython/releases
+  https://circuitpython.org/downloads
 
 * Adafruit's Bus Device library: https://github.com/adafruit/Adafruit_CircuitPython_BusDevice
 
@@ -41,12 +44,37 @@ _MPRLS_DEFAULT_ADDR = const(0x18)
 class MPRLS:
     """
     Driver base for the MPRLS pressure sensor
-    :param i2c_bus: The `busio.I2C` object to use. This is the only required parameter.
-    :param int addr: The optional I2C address, defaults to 0x18
-    :param microcontroller.Pin reset_pin: Optional digitalio pin for hardware resetting
-    :param microcontroller.Pin eoc_pin: Optional digitalio pin for getting End Of Conversion signal
-    :param float psi_min: The minimum pressure in PSI, defaults to 0
-    :param float psi_max: The maximum pressure in PSI, defaults to 25
+
+    :param ~busio.I2C i2c_bus: The I2C bus the MPRLS is connected to
+    :param int addr: The I2C device address. Defaults to :const:`0x18`
+    :param ~microcontroller.Pin reset_pin: Optional ``digitalio.pin`` for hardware resetting
+    :param ~microcontroller.Pin eoc_pin: Optional ``digitalio pin`` for getting End Of Conversion signal
+    :param float psi_min: The minimum pressure in PSI, defaults to :const:`0`
+    :param float psi_max: The maximum pressure in PSI, defaults to :const:`25`
+
+    **Quickstart: Importing and using the MPRLS**
+
+        Here is an example of using the :class:`MPRLS` class.
+        First you will need to import the libraries to use the sensor
+
+        .. code-block:: python
+
+            import board
+            import adafruit_mprls
+
+        Once this is done you can define your `board.I2C` object and define your sensor object
+
+        .. code-block:: python
+
+            i2c = board.I2C()  # uses board.SCL and board.SDA
+            mpr = adafruit_mprls.MPRLS(i2c, psi_min=0, psi_max=25)
+
+        Now you have access to the :attr:`pressure` attribute
+
+        .. code-block:: python
+
+            pressure = mpr.pressure
+
     """
 
     def __init__(
