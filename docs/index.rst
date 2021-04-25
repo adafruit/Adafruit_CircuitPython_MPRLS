@@ -23,8 +23,12 @@ Table of Contents
 .. toctree::
     :caption: Tutorials
 
+    Adafruit MPRLS Ported Pressure Sensor Breakout - 0 to 25 PSI Learning Guide <https://learn.adafruit.com/adafruit-mprls-ported-pressure-sensor-breakout>
+
 .. toctree::
     :caption: Related Products
+
+    Adafruit MPRLS Ported Pressure Sensor Breakout - 0 to 25 PSI <https://www.adafruit.com/product/3965>
 
 .. toctree::
     :caption: Other Links
