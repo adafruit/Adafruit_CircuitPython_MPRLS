@@ -5,7 +5,8 @@ import time
 import board
 import adafruit_mprls
 
-i2c = board.I2C()
+i2c = board.I2C()  # uses board.SCL and board.SDA
+# i2c = board.STEMMA_I2C()  # For using the built-in STEMMA QT connector on a microcontroller
 
 # Simplest use, connect to default over I2C
 mpr = adafruit_mprls.MPRLS(i2c, psi_min=0, psi_max=25)
