@@ -38,6 +38,13 @@ from adafruit_bus_device.i2c_device import I2CDevice
 from digitalio import Direction
 from micropython import const
 
+try:
+    from typing import Optional
+    from busio import I2C
+    from digitalio import DigitalInOut  # pylint: disable=ungrouped-imports
+except ImportError:
+    pass
+
 _MPRLS_DEFAULT_ADDR = const(0x18)
 
 
@@ -80,13 +87,13 @@ class MPRLS:
 
     def __init__(
         self,
-        i2c_bus,
+        i2c_bus: I2C,
         *,
-        addr=_MPRLS_DEFAULT_ADDR,
-        reset_pin=None,
-        eoc_pin=None,
-        psi_min=0,
-        psi_max=25
+        addr: int = _MPRLS_DEFAULT_ADDR,
+        reset_pin: Optional[DigitalInOut] = None,
+        eoc_pin: Optional[DigitalInOut] = None,
+        psi_min: int = 0,
+        psi_max: int = 25
     ):
         # Init I2C
         self._i2c = I2CDevice(i2c_bus, addr)
@@ -113,11 +120,11 @@ class MPRLS:
         # That's pretty much it, there's no ID register :(
 
     @property
-    def pressure(self):
+    def pressure(self) -> float:
         """The measured pressure, in hPa"""
         return self._read_data()
 
-    def _read_data(self):
+    def _read_data(self) -> float:
         """Read the status & 24-bit data reading"""
         self._buffer[0] = 0xAA
         self._buffer[1] = 0
