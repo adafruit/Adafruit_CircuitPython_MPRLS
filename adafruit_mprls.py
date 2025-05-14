@@ -34,14 +34,16 @@ __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_MPRLS.git"
 
 
 import time
+
 from adafruit_bus_device.i2c_device import I2CDevice
 from digitalio import Direction
 from micropython import const
 
 try:
     from typing import Optional
+
     from busio import I2C
-    from digitalio import DigitalInOut  # pylint: disable=ungrouped-imports
+    from digitalio import DigitalInOut
 except ImportError:
     pass
 
@@ -93,7 +95,7 @@ class MPRLS:
         reset_pin: Optional[DigitalInOut] = None,
         eoc_pin: Optional[DigitalInOut] = None,
         psi_min: int = 0,
-        psi_max: int = 25
+        psi_max: int = 25,
     ):
         # Init I2C
         self._i2c = I2CDevice(i2c_bus, addr)
